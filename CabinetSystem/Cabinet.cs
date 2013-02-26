@@ -16,9 +16,8 @@ namespace CabinetSystem
             _capacity = capacity;
         }
 
-        public Cabinet()
+        public Cabinet() : this(50)
         {
-            _capacity = 50;
         }
 
         public bool HasEmptyBox()
@@ -28,14 +27,11 @@ namespace CabinetSystem
 
         public Ticket Store(Bag aBag)
         {
-            if (HasEmptyBox())
-            {
-                Ticket ticket = new Ticket();
-                _dicTicketBag.Add(ticket,aBag);
-                return ticket;
+            if (!HasEmptyBox()) return null;
 
-            }
-            return null;
+            Ticket ticket = new Ticket();
+            _dicTicketBag.Add(ticket,aBag);
+            return ticket;
         }
 
         public Bag Pick(Ticket ticket)
