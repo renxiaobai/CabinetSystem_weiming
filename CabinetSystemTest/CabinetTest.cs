@@ -32,10 +32,44 @@ namespace CabinetSystemTest
         public void should_return_bag_given_valid_ticket_when_pick()
         {
             Bag aBag = new Bag();
+            Bag anotherBag = new Bag();
             Cabinet cabinet = new Cabinet();
 
             Ticket ticket = cabinet.Store(aBag);
-            Assert.AreEqual(aBag, cabinet.Pick(ticket));
+            var resultTicket = cabinet.Pick(ticket);
+            Assert.AreEqual(aBag, resultTicket);
+            Assert.AreNotEqual(anotherBag, resultTicket);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void should_not_return_bag_given_used_ticket_when_pick()
+        {
+            Bag aBag = new Bag();
+            Cabinet cabinet = new Cabinet();
+
+            Ticket ticket = cabinet.Store(aBag);
+            cabinet.Pick(ticket);
+            cabinet.Pick(ticket);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void should_not_return_bag_given_invalid_ticket_when_pick()
+        {
+            Ticket ticket = new Ticket();
+            Cabinet cabinet = new Cabinet();
+
+            cabinet.Pick(ticket);
+        }
+
+        [TestMethod]
+        public void should_not_return_ticket_given_full_cabinet_when_pick()
+        {
+            Bag bag = new Bag();
+            var cabinet = new Cabinet(0);
+
+            Assert.IsNull(cabinet.Store(bag));
         }
     }
 }

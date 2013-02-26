@@ -9,9 +9,21 @@ namespace CabinetSystem
     public class Cabinet
     {
         private Dictionary<Ticket, Bag> _dicTicketBag = new Dictionary<Ticket, Bag>();
+        private int _capacity;
+
+        public Cabinet(int capacity)
+        {
+            _capacity = capacity;
+        }
+
+        public Cabinet()
+        {
+            _capacity = 50;
+        }
+
         public bool HasEmptyBox()
         {
-            return true;
+            return _dicTicketBag.Count < _capacity;
         }
 
         public Ticket Store(Bag aBag)
@@ -28,7 +40,12 @@ namespace CabinetSystem
 
         public Bag Pick(Ticket ticket)
         {
-            return _dicTicketBag.ContainsKey(ticket) ? _dicTicketBag[ticket] : null;
+            if(false == _dicTicketBag.ContainsKey(ticket))  
+                throw  new InvalidOperationException();
+
+            var bag = _dicTicketBag[ticket];
+            _dicTicketBag.Remove(ticket);
+            return bag;
         }
     }
 }
