@@ -15,6 +15,7 @@ namespace CabinetSystemTest
         public void should_has_empty_box_given_cabinet()
         {
             Cabinet cabinet = new Cabinet();
+
             Assert.IsTrue(cabinet.HasEmptyBox());
         }
 
@@ -25,6 +26,7 @@ namespace CabinetSystemTest
             Cabinet cabinet = new Cabinet();
 
             Ticket ticket = cabinet.Store(aBag);
+
             Assert.IsNotNull(ticket);
         }
 
@@ -37,6 +39,7 @@ namespace CabinetSystemTest
 
             Ticket ticket = cabinet.Store(aBag);
             var resultTicket = cabinet.Pick(ticket);
+
             Assert.AreEqual(aBag, resultTicket);
             Assert.AreNotEqual(anotherBag, resultTicket);
         }
@@ -47,9 +50,9 @@ namespace CabinetSystemTest
         {
             Bag aBag = new Bag();
             Cabinet cabinet = new Cabinet();
-
             Ticket ticket = cabinet.Store(aBag);
             cabinet.Pick(ticket);
+
             cabinet.Pick(ticket);
         }
 
