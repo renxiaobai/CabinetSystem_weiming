@@ -2,6 +2,7 @@
 using System.Text;
 using System.Collections.Generic;
 using System.Linq;
+using CabinetSystem;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CabinetSystemTest
@@ -63,7 +64,18 @@ namespace CabinetSystemTest
         public void should_return_true_given_has_empty_box()
         {
             var robot = new Robot();
+            var cabinet = new Cabinet();
+            robot.Add(cabinet);
             Assert.IsTrue(robot.HasEmptybox());
+        }
+
+        [TestMethod]
+        public void should_return_false_given_hasnot_empty_box()
+        {
+            var robot = new Robot();
+            var cabinet = new Cabinet(0);
+            robot.Add(cabinet);
+            Assert.IsFalse(robot.HasEmptybox());
         }
     }
 }
