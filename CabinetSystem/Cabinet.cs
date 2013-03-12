@@ -16,10 +16,6 @@ namespace CabinetSystem
             _capacity = capacity;
         }
 
-        public Cabinet() : this(50)
-        {
-        }
-
         public bool HasEmptyBox()
         {
             return _dicTicketBag.Count < _capacity;

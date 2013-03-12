@@ -14,7 +14,7 @@ namespace CabinetSystemTest
         [TestMethod]
         public void should_has_empty_box_given_cabinet()
         {
-            Cabinet cabinet = new Cabinet();
+            Cabinet cabinet = new Cabinet(50);
 
             Assert.IsTrue(cabinet.HasEmptyBox());
         }
@@ -23,7 +23,7 @@ namespace CabinetSystemTest
         public void should_return_ticket_given_empty_cabinet_when_store()
         {
             Bag aBag = new Bag();
-            Cabinet cabinet = new Cabinet();
+            Cabinet cabinet = new Cabinet(50);
 
             Ticket ticket = cabinet.Store(aBag);
 
@@ -35,7 +35,7 @@ namespace CabinetSystemTest
         {
             Bag aBag = new Bag();
             Bag anotherBag = new Bag();
-            Cabinet cabinet = new Cabinet();
+            Cabinet cabinet = new Cabinet(50);
 
             Ticket ticket = cabinet.Store(aBag);
             var resultTicket = cabinet.Pick(ticket);
@@ -49,7 +49,7 @@ namespace CabinetSystemTest
         public void should_not_return_bag_given_used_ticket_when_pick()
         {
             Bag aBag = new Bag();
-            Cabinet cabinet = new Cabinet();
+            Cabinet cabinet = new Cabinet(50);
             Ticket ticket = cabinet.Store(aBag);
             cabinet.Pick(ticket);
 
@@ -61,7 +61,7 @@ namespace CabinetSystemTest
         public void should_not_return_bag_given_invalid_ticket_when_pick()
         {
             Ticket ticket = new Ticket();
-            Cabinet cabinet = new Cabinet();
+            Cabinet cabinet = new Cabinet(50);
 
             cabinet.Pick(ticket);
         }

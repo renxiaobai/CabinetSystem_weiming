@@ -64,7 +64,7 @@ namespace CabinetSystemTest
         public void should_return_true_given_has_empty_box()
         {
             var robot = new Robot();
-            var cabinet = new Cabinet();
+            var cabinet = new Cabinet(50);
             robot.Add(cabinet);
             Assert.IsTrue(robot.HasEmptybox());
         }
