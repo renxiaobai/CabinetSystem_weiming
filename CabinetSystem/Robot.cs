@@ -22,5 +22,18 @@ namespace CabinetSystemTest
         }
 
         private List<Cabinet> cabinetList = new List<Cabinet>();
+
+        public Ticket Store(Bag bag)
+        {
+            foreach (var cabinet in cabinetList)
+            {
+                if (cabinet.HasEmptyBox())
+                {
+                    return cabinet.Store(bag);
+                }
+                
+            }
+            return null;
+        }
     }
 }
