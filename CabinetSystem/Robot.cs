@@ -31,7 +31,7 @@ namespace CabinetSystemTest
             {
                 if (cabinet.HasEmptyBox())
                 {
-                    var ticket = cabinet.Store(bag);
+                    var ticket = cabinet.Store(bag,"Robot");
                     ticketList.Add(ticket);
                     return ticket;
                 }
@@ -49,7 +49,7 @@ namespace CabinetSystemTest
             {
                 try
                 {
-                    bag = cabinet.Pick(ticket);
+                    bag = cabinet.Pick(ticket,"Robot");
                 }
                 catch (Exception)
                 {
