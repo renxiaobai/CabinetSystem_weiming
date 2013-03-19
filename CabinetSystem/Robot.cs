@@ -32,33 +32,20 @@ namespace CabinetSystem
                     var ticket = cabinet.Store(bag,"Robot");
                     return ticket;
                 }
-                
             }
             return null;
         }
 
-        public Bag pick(Ticket ticket)
+        public Bag Pick(Ticket ticket)
         {
-            Bag bag = null;
             foreach (var cabinet in cabinetList)
             {
-                try
-                {
-                    bag = cabinet.Pick(ticket,"Robot");
-                }
-                catch (Exception)
-                {
-                    
-                   continue;
-                }
-  
+                var bag = cabinet.Pick(ticket,"Robot");
                 if (bag!=null)
-                {
                     return bag;
-                }
 
             }
-            return bag;
+            return null;
         }
     }
 }

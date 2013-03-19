@@ -116,7 +116,7 @@ namespace CabinetSystemTest
             var ticket2 = robot.Store(bag2);
             var ticket3 = robot.Store(bag3);
 
-            Assert.AreEqual(bag3, robot.pick(ticket3));
+            Assert.AreEqual(bag3, robot.Pick(ticket3));
         }
 
         [TestMethod]
@@ -135,8 +135,8 @@ namespace CabinetSystemTest
             var ticket1 = robot.Store(bag1);
             var ticket2 = robot.Store(bag2);
             var ticket3 = robot.Store(bag3);
-            robot.pick(ticket3);
-            Assert.IsNull(robot.pick(ticket3));
+            robot.Pick(ticket3);
+            Assert.IsNull(robot.Pick(ticket3));
         }
         [TestMethod]
         public void should_return_null_when_pick_given_fake_ticket()
@@ -155,7 +155,7 @@ namespace CabinetSystemTest
             var ticket2 = robot.Store(bag2);
             var ticket3 = new Ticket();
 
-            Assert.IsNull(robot.pick(ticket3));
+            Assert.IsNull(robot.Pick(ticket3));
         }
 
         [TestMethod]
@@ -175,7 +175,7 @@ namespace CabinetSystemTest
             var ticket2 = robot.Store(bag2);
             var ticket3 = cabinet2.Store(bag3);
 
-            Assert.IsNull(robot.pick(ticket3));
+            Assert.IsNull(robot.Pick(ticket3));
         }
     }
 }

@@ -45,7 +45,6 @@ namespace CabinetSystemTest
         }
 
         [TestMethod]
-        [ExpectedException(typeof(InvalidOperationException))]
         public void should_not_return_bag_given_used_ticket_when_pick()
         {
             Bag aBag = new Bag();
@@ -53,17 +52,16 @@ namespace CabinetSystemTest
             Ticket ticket = cabinet.Store(aBag);
             cabinet.Pick(ticket);
 
-            cabinet.Pick(ticket);
+            Assert.IsNull(cabinet.Pick(ticket));
         }
 
         [TestMethod]
-        [ExpectedException(typeof(InvalidOperationException))]
         public void should_not_return_bag_given_invalid_ticket_when_pick()
         {
             Ticket ticket = new Ticket();
             Cabinet cabinet = new Cabinet(50);
 
-            cabinet.Pick(ticket);
+            Assert.IsNull(cabinet.Pick(ticket));
         }
 
         [TestMethod]

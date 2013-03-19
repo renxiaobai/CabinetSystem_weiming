@@ -42,7 +42,7 @@ namespace CabinetSystem
             if (ticket.Creater != ticketCreater)
                 return null;
             if (false == _dicTicketBag.ContainsKey(ticket))
-                throw new InvalidOperationException();
+                return null;
 
             var bag = _dicTicketBag[ticket];
             _dicTicketBag.Remove(ticket);
