@@ -7,6 +7,7 @@ namespace CabinetSystem
 {
     public class Cabinet
     {
+        private const string TicketCreater = "Cabinet";
         private readonly Dictionary<Ticket, Bag> _dicTicketBag = new Dictionary<Ticket, Bag>();
         private readonly int _capacity; 
 
@@ -22,7 +23,7 @@ namespace CabinetSystem
 
         public Ticket Store(Bag aBag)
         {
-            return Store(aBag, "Cabinet");
+            return Store(aBag, TicketCreater);
         }
         public Ticket Store(Bag aBag,string ticketCreater)
         {
@@ -35,7 +36,7 @@ namespace CabinetSystem
         }
         public Bag Pick(Ticket ticket)
         {
-            return Pick(ticket, "Cabinet");
+            return Pick(ticket, TicketCreater);
         }
         public Bag Pick(Ticket ticket,string ticketCreater)
         {

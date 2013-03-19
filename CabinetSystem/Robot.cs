@@ -5,6 +5,7 @@ namespace CabinetSystem
 {
     public class Robot
     {
+        private const string TicketCreater = "Robot";
         public bool HasEmptybox()
         {
             foreach (var cabinet in cabinetList)
@@ -29,7 +30,7 @@ namespace CabinetSystem
             {
                 if (cabinet.HasEmptyBox())
                 {
-                    var ticket = cabinet.Store(bag,"Robot");
+                    var ticket = cabinet.Store(bag, TicketCreater);
                     return ticket;
                 }
             }
@@ -40,7 +41,7 @@ namespace CabinetSystem
         {
             foreach (var cabinet in cabinetList)
             {
-                var bag = cabinet.Pick(ticket,"Robot");
+                var bag = cabinet.Pick(ticket, TicketCreater);
                 if (bag!=null)
                     return bag;
 
