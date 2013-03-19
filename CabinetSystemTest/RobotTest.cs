@@ -98,5 +98,66 @@ namespace CabinetSystemTest
 
             Assert.IsNull(ticket);
         }
+
+        [TestMethod]
+        public void should_return_matched_bag_when_pick_given_valid_ticket()
+        {
+            var robot = new Robot();
+            var cabinet1 = new Cabinet(2);
+            var cabinet2 = new Cabinet(2);
+            robot.Add(cabinet1);
+            robot.Add(cabinet2);
+
+            var bag1 = new Bag();
+            var bag2 = new Bag();
+            var bag3 = new Bag();
+
+            var ticket1 = robot.Store(bag1);
+            var ticket2 = robot.Store(bag2);
+            var ticket3 = robot.Store(bag3);
+
+            Assert.AreEqual(bag3, robot.pick(ticket3));
+        }
+
+        [TestMethod]
+        public void should_return_null_when_pick_given_used_ticket()
+        {
+            var robot = new Robot();
+            var cabinet1 = new Cabinet(2);
+            var cabinet2 = new Cabinet(2);
+            robot.Add(cabinet1);
+            robot.Add(cabinet2);
+
+            var bag1 = new Bag();
+            var bag2 = new Bag();
+            var bag3 = new Bag();
+
+            var ticket1 = robot.Store(bag1);
+            var ticket2 = robot.Store(bag2);
+            var ticket3 = robot.Store(bag3);
+            robot.pick(ticket3);
+            Assert.IsNull(robot.pick(ticket3));
+        }
+        [TestMethod]
+        public void should_return_null_when_pick_given_fake_ticket()
+        {
+            var robot = new Robot();
+            var cabinet1 = new Cabinet(2);
+            var cabinet2 = new Cabinet(2);
+            robot.Add(cabinet1);
+            robot.Add(cabinet2);
+
+            var bag1 = new Bag();
+            var bag2 = new Bag();
+            var bag3 = new Bag();
+
+            var ticket1 = robot.Store(bag1);
+            var ticket2 = robot.Store(bag2);
+            var ticket3 = new Ticket();
+
+            Assert.IsNull(robot.pick(ticket3));
+        }
+
+        
     }
 }

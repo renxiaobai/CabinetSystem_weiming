@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using CabinetSystem;
 
 namespace CabinetSystemTest
@@ -34,6 +35,30 @@ namespace CabinetSystemTest
                 
             }
             return null;
+        }
+
+        public Bag pick(Ticket ticket1)
+        {
+            Bag bag = null;
+            foreach (var cabinet in cabinetList)
+            {
+                try
+                {
+                    bag = cabinet.Pick(ticket1);
+                }
+                catch (Exception)
+                {
+                    
+                   continue;
+                }
+  
+                if (bag!=null)
+                {
+                    return bag;
+                }
+
+            }
+            return bag;
         }
     }
 }
