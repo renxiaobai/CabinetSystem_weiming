@@ -158,6 +158,24 @@ namespace CabinetSystemTest
             Assert.IsNull(robot.pick(ticket3));
         }
 
-        
+        [TestMethod]
+        public void should_return_null_when_pick_given_cabinet_stroed_ticket()
+        {
+            var robot = new Robot();
+            var cabinet1 = new Cabinet(2);
+            var cabinet2 = new Cabinet(2);
+            robot.Add(cabinet1);
+            robot.Add(cabinet2);
+
+            var bag1 = new Bag();
+            var bag2 = new Bag();
+            var bag3 = new Bag();
+
+            var ticket1 = robot.Store(bag1);
+            var ticket2 = robot.Store(bag2);
+            var ticket3 = cabinet2.Store(bag3);
+
+            Assert.IsNull(robot.pick(ticket3));
+        }
     }
 }

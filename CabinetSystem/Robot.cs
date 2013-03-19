@@ -23,6 +23,7 @@ namespace CabinetSystemTest
         }
 
         private List<Cabinet> cabinetList = new List<Cabinet>();
+        private List<Ticket> ticketList = new List<Ticket>();
 
         public Ticket Store(Bag bag)
         {
@@ -30,21 +31,25 @@ namespace CabinetSystemTest
             {
                 if (cabinet.HasEmptyBox())
                 {
-                    return cabinet.Store(bag);
+                    var ticket = cabinet.Store(bag);
+                    ticketList.Add(ticket);
+                    return ticket;
                 }
                 
             }
             return null;
         }
 
-        public Bag pick(Ticket ticket1)
+        public Bag pick(Ticket ticket)
         {
             Bag bag = null;
+            if (!ticketList.Contains(ticket))
+                return null;
             foreach (var cabinet in cabinetList)
             {
                 try
                 {
-                    bag = cabinet.Pick(ticket1);
+                    bag = cabinet.Pick(ticket);
                 }
                 catch (Exception)
                 {
