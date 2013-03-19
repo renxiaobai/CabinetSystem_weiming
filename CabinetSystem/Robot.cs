@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using CabinetSystem;
 
-namespace CabinetSystemTest
+namespace CabinetSystem
 {
     public class Robot
     {
@@ -22,7 +21,7 @@ namespace CabinetSystemTest
             cabinetList.Add(cabinet);
         }
 
-        private List<Cabinet> cabinetList = new List<Cabinet>();
+        private readonly List<Cabinet> cabinetList = new List<Cabinet>();
 
         public Ticket Store(Bag bag)
         {

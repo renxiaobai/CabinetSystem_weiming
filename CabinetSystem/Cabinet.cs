@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using CabinetSystemTest;
 
 namespace CabinetSystem
 {
     public class Cabinet
     {
-        private Dictionary<Ticket, Bag> _dicTicketBag = new Dictionary<Ticket, Bag>();
-        private int _capacity; 
+        private readonly Dictionary<Ticket, Bag> _dicTicketBag = new Dictionary<Ticket, Bag>();
+        private readonly int _capacity; 
 
         public Cabinet(int capacity)
         {
@@ -23,12 +22,7 @@ namespace CabinetSystem
 
         public Ticket Store(Bag aBag)
         {
-            if (!HasEmptyBox()) return null;
-
-            Ticket ticket = new Ticket();
-            ticket.Creater = "Cabinet";
-            _dicTicketBag.Add(ticket,aBag);
-            return ticket;
+            return Store(aBag, "Cabinet");
         }
         public Ticket Store(Bag aBag,string ticketCreater)
         {
@@ -41,13 +35,7 @@ namespace CabinetSystem
         }
         public Bag Pick(Ticket ticket)
         {
-            if(false == _dicTicketBag.ContainsKey(ticket))  
-                throw  new InvalidOperationException();
-            if (ticket.Creater != "Cabinet")
-                return null;
-            var bag = _dicTicketBag[ticket];
-            _dicTicketBag.Remove(ticket);
-            return bag;
+            return Pick(ticket, "Cabinet");
         }
         public Bag Pick(Ticket ticket,string ticketCreater)
         {
