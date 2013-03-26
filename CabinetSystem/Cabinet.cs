@@ -16,6 +16,12 @@ namespace CabinetSystem
             _capacity = capacity;
         }
 
+        public int EmptyuBoxCount
+        {
+            get { return _capacity - _dicTicketBag.Count; }
+
+        }
+
         public bool HasEmptyBox()
         {
             return _dicTicketBag.Count < _capacity;

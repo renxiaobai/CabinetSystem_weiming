@@ -22,5 +22,21 @@ namespace CabinetSystem
         {
             return cabinetList.Any(cabinet => cabinet.HasEmptyBox());
         }
+
+        public Ticket Store(Bag bag)
+        {
+            int emptyBoxCount = 0;
+            Cabinet cabinetWithMostEmptyBox = null;
+            foreach (var cabinet in cabinetList)
+            {
+                if (cabinet.EmptyuBoxCount > emptyBoxCount)
+                {
+                    emptyBoxCount = cabinet.EmptyuBoxCount;
+                    cabinetWithMostEmptyBox = cabinet;
+                }
+            }
+            if (cabinetWithMostEmptyBox != null) return cabinetWithMostEmptyBox.Store(bag);
+            return null;
+        }
     }
 }
