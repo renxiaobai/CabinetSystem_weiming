@@ -61,7 +61,7 @@ namespace CabinetSystem
             return bag;
         }
 
-        private static bool IsValidateTicket(Ticket ticket, string ticketCreater)
+        private bool IsValidateTicket(Ticket ticket, string ticketCreater)
         {
             if (ticket.Creater != ticketCreater)
                 return true;

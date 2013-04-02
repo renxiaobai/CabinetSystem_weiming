@@ -6,6 +6,8 @@ namespace CabinetSystem
 {
     public class SmartRobot
     {
+        private const string TicketCreater = "SmartRobot";
+
         private List<Cabinet> cabinetList;
 
         public SmartRobot()
@@ -35,7 +37,7 @@ namespace CabinetSystem
                     cabinetWithMostEmptyBox = cabinet;
                 }
             }
-            if (cabinetWithMostEmptyBox != null) return cabinetWithMostEmptyBox.Direct.Store(bag);
+            if (cabinetWithMostEmptyBox != null) return cabinetWithMostEmptyBox.Store(bag, TicketCreater);
             return null;
         }
     }

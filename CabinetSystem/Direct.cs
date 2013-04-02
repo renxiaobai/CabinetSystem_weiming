@@ -2,6 +2,8 @@
 {
     public class Direct
     {
+        private const string TicketCreater = "Cabinet";
+
         private Cabinet cabinet;
 
         public Direct(Cabinet cabinet)
@@ -11,12 +13,12 @@
 
         public Ticket Store(Bag aBag)
         {
-            return cabinet.Store(aBag, "Cabinet");
+            return cabinet.Store(aBag, TicketCreater);
         }
 
         public Bag Pick(Ticket ticket)
         {
-            return cabinet.Pick(ticket, "Cabinet");
+            return cabinet.Pick(ticket, TicketCreater);
         }
     }
 }
