@@ -35,7 +35,7 @@ namespace CabinetSystem
                     cabinetWithMostEmptyBox = cabinet;
                 }
             }
-            if (cabinetWithMostEmptyBox != null) return cabinetWithMostEmptyBox.Store(bag);
+            if (cabinetWithMostEmptyBox != null) return cabinetWithMostEmptyBox.Direct.Store(bag);
             return null;
         }
     }

@@ -9,11 +9,13 @@ namespace CabinetSystem
     {
         private const string TicketCreater = "Cabinet";
         private readonly Dictionary<Ticket, Bag> _dicTicketBag = new Dictionary<Ticket, Bag>();
-        private readonly int _capacity; 
+        private readonly int _capacity;
+        private readonly Direct direct;
 
         public Cabinet(int capacity)
         {
             _capacity = capacity;
+            direct = new Direct(this);
         }
 
         public int EmptyuBoxCount
@@ -22,15 +24,16 @@ namespace CabinetSystem
 
         }
 
+        public Direct Direct
+        {
+            get { return direct; }
+        }
+
         public bool HasEmptyBox()
         {
             return _dicTicketBag.Count < _capacity;
         }
 
-        public Ticket Store(Bag aBag)
-        {
-            return Store(aBag, TicketCreater);
-        }
         public Ticket Store(Bag aBag,string ticketCreater)
         {
             if (!HasEmptyBox()) return null;
@@ -47,10 +50,6 @@ namespace CabinetSystem
             return ticket;
         }
 
-        public Bag Pick(Ticket ticket)
-        {
-            return Pick(ticket, TicketCreater);
-        }
         public Bag Pick(Ticket ticket,string ticketCreater)
         {
             if (IsValidateTicket(ticket, ticketCreater)) return null;

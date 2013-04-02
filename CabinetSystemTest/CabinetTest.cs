@@ -25,7 +25,7 @@ namespace CabinetSystemTest
             Bag aBag = new Bag();
             Cabinet cabinet = new Cabinet(50);
 
-            Ticket ticket = cabinet.Store(aBag);
+            Ticket ticket = cabinet.Direct.Store(aBag);
 
             Assert.IsNotNull(ticket);
         }
@@ -37,8 +37,8 @@ namespace CabinetSystemTest
             Bag anotherBag = new Bag();
             Cabinet cabinet = new Cabinet(50);
 
-            Ticket ticket = cabinet.Store(aBag);
-            var resultTicket = cabinet.Pick(ticket);
+            Ticket ticket = cabinet.Direct.Store(aBag);
+            var resultTicket = cabinet.Direct.Pick(ticket);
 
             Assert.AreEqual(aBag, resultTicket);
             Assert.AreNotEqual(anotherBag, resultTicket);
@@ -49,10 +49,10 @@ namespace CabinetSystemTest
         {
             Bag aBag = new Bag();
             Cabinet cabinet = new Cabinet(50);
-            Ticket ticket = cabinet.Store(aBag);
-            cabinet.Pick(ticket);
+            Ticket ticket = cabinet.Direct.Store(aBag);
+            cabinet.Direct.Pick(ticket);
 
-            Assert.IsNull(cabinet.Pick(ticket));
+            Assert.IsNull(cabinet.Direct.Pick(ticket));
         }
 
         [TestMethod]
@@ -61,7 +61,7 @@ namespace CabinetSystemTest
             Ticket ticket = new Ticket();
             Cabinet cabinet = new Cabinet(50);
 
-            Assert.IsNull(cabinet.Pick(ticket));
+            Assert.IsNull(cabinet.Direct.Pick(ticket));
         }
 
         [TestMethod]
@@ -70,7 +70,7 @@ namespace CabinetSystemTest
             Bag bag = new Bag();
             var cabinet = new Cabinet(0);
 
-            Assert.IsNull(cabinet.Store(bag));
+            Assert.IsNull(cabinet.Direct.Store(bag));
         }
 
         [TestMethod]
@@ -81,7 +81,7 @@ namespace CabinetSystemTest
             robot.Add(cabinet);
             var ticket = robot.Store(new Bag());
 
-            Assert.IsNull(cabinet.Pick(ticket));
+            Assert.IsNull(cabinet.Direct.Pick(ticket));
         }
     }
 }

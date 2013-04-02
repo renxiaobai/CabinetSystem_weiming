@@ -173,7 +173,7 @@ namespace CabinetSystemTest
 
             var ticket1 = robot.Store(bag1);
             var ticket2 = robot.Store(bag2);
-            var ticket3 = cabinet2.Store(bag3);
+            var ticket3 = cabinet2.Direct.Store(bag3);
 
             Assert.IsNull(robot.Pick(ticket3));
         }
