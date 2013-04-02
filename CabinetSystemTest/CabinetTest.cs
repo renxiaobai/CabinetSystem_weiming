@@ -19,16 +19,7 @@ namespace CabinetSystemTest
             Assert.IsTrue(cabinet.HasEmptyBox());
         }
 
-        [TestMethod]
-        public void should_return_ticket_given_empty_cabinet_when_store()
-        {
-            Bag aBag = new Bag();
-            Cabinet cabinet = new Cabinet(50);
 
-            Ticket ticket = new Direct(cabinet).Store(aBag);
-
-            Assert.IsNotNull(ticket);
-        }
 
         [TestMethod]
         public void should_return_bag_given_valid_ticket_when_pick()
