@@ -30,7 +30,8 @@ namespace CabinetSystem
             {
                 if (cabinet.HasEmptyBox())
                 {
-                    var ticket = cabinet.Store(bag, TicketCreater);
+                    var ticket1 = Ticket.CreateTicket(TicketCreater);
+                    var ticket = cabinet.Store(bag, ticket1);
                     return ticket;
                 }
             }

@@ -37,7 +37,11 @@ namespace CabinetSystem
                     cabinetWithMostEmptyBox = cabinet;
                 }
             }
-            if (cabinetWithMostEmptyBox != null) return cabinetWithMostEmptyBox.Store(bag, TicketCreater);
+            if (cabinetWithMostEmptyBox != null)
+            {
+                var ticket = Ticket.CreateTicket(TicketCreater);
+                return cabinetWithMostEmptyBox.Store(bag, ticket);
+            }
             return null;
         }
     }

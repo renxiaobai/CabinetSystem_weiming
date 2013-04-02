@@ -13,7 +13,8 @@
 
         public Ticket Store(Bag aBag)
         {
-            return cabinet.Store(aBag, TicketCreater);
+            var ticket = Ticket.CreateTicket(TicketCreater);
+            return cabinet.Store(aBag, ticket);
         }
 
         public Bag Pick(Ticket ticket)

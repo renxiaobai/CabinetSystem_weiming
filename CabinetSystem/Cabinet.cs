@@ -34,12 +34,6 @@ namespace CabinetSystem
             return _dicTicketBag.Count < _capacity;
         }
 
-        public Ticket Store(Bag aBag,string ticketCreater)
-        { 
-            var ticket = Ticket.CreateTicket(ticketCreater);
-            return Store(aBag, ticket);
-        }
-
         public Ticket Store(Bag aBag, Ticket ticket)
         {
             if (!HasEmptyBox()) return null;
