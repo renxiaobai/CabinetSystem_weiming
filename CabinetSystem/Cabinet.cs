@@ -35,25 +35,38 @@ namespace CabinetSystem
         {
             if (!HasEmptyBox()) return null;
 
-            Ticket ticket = new Ticket();
-            ticket.Creater = ticketCreater;
+            var ticket = CreateTicket(ticketCreater);
             _dicTicketBag.Add(ticket, aBag);
             return ticket;
         }
+
+        private Ticket CreateTicket(string ticketCreater)
+        {
+            Ticket ticket = new Ticket();
+            ticket.Creater = ticketCreater;
+            return ticket;
+        }
+
         public Bag Pick(Ticket ticket)
         {
             return Pick(ticket, TicketCreater);
         }
         public Bag Pick(Ticket ticket,string ticketCreater)
         {
-            if (ticket.Creater != ticketCreater)
-                return null;
+            if (IsValidateTicket(ticket, ticketCreater)) return null;
             if (false == _dicTicketBag.ContainsKey(ticket))
                 return null;
 
             var bag = _dicTicketBag[ticket];
             _dicTicketBag.Remove(ticket);
             return bag;
+        }
+
+        private static bool IsValidateTicket(Ticket ticket, string ticketCreater)
+        {
+            if (ticket.Creater != ticketCreater)
+                return true;
+            return false;
         }
     }
 }
