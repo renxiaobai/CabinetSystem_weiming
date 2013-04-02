@@ -21,50 +21,13 @@ namespace CabinetSystemTest
 
 
 
-        [TestMethod]
-        public void should_return_bag_given_valid_ticket_when_pick()
-        {
-            Bag aBag = new Bag();
-            Bag anotherBag = new Bag();
-            Cabinet cabinet = new Cabinet(50);
 
-            var directInstance = new Direct(cabinet);
-            Ticket ticket = directInstance.Store(aBag);
-            var resultTicket = directInstance.Pick(ticket);
 
-            Assert.AreEqual(aBag, resultTicket);
-            Assert.AreNotEqual(anotherBag, resultTicket);
-        }
 
-        [TestMethod]
-        public void should_not_return_bag_given_used_ticket_when_pick()
-        {
-            Bag aBag = new Bag();
-            Cabinet cabinet = new Cabinet(50);
-            var directInstance = new Direct(cabinet);
-            Ticket ticket = directInstance.Store(aBag);
-            directInstance.Pick(ticket);
 
-            Assert.IsNull(directInstance.Pick(ticket));
-        }
 
-        [TestMethod]
-        public void should_not_return_bag_given_invalid_ticket_when_pick()
-        {
-            Ticket ticket = new Ticket();
-            Cabinet cabinet = new Cabinet(50);
 
-            Assert.IsNull(new Direct(cabinet).Pick(ticket));
-        }
 
-        [TestMethod]
-        public void should_not_return_ticket_given_full_cabinet_when_pick()
-        {
-            Bag bag = new Bag();
-            var cabinet = new Cabinet(0);
-
-            Assert.IsNull(new Direct(cabinet).Store(bag));
-        }
 
 //         [TestMethod]
 //         public void should_return_null_given_robot_ticket_when_pick()

@@ -21,5 +21,10 @@
         {
             return cabinet.Pick(ticket, TicketCreater);
         }
+
+        public bool HasEmptyBox()
+        {
+            return cabinet.HasEmptyBox();
+        }
     }
 }
