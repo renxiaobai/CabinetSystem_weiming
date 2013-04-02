@@ -35,37 +35,33 @@ namespace CabinetSystem
         }
 
         public Ticket Store(Bag aBag,string ticketCreater)
+        { 
+            var ticket = Ticket.CreateTicket(ticketCreater);
+            return Store(aBag, ticket);
+        }
+
+        public Ticket Store(Bag aBag, Ticket ticket)
         {
             if (!HasEmptyBox()) return null;
 
-            var ticket = CreateTicket(ticketCreater);
             _dicTicketBag.Add(ticket, aBag);
-            return ticket;
-        }
-
-        private Ticket CreateTicket(string ticketCreater)
-        {
-            Ticket ticket = new Ticket();
-            ticket.Creater = ticketCreater;
             return ticket;
         }
 
         public Bag Pick(Ticket ticket,string ticketCreater)
         {
-            if (IsValidateTicket(ticket, ticketCreater)) return null;
+            if (Ticket.IsValidateTicket(ticket, ticketCreater)) return null;
+            return Pick(ticket);
+        }
+
+        public Bag Pick(Ticket ticket)
+        {
             if (false == _dicTicketBag.ContainsKey(ticket))
                 return null;
 
             var bag = _dicTicketBag[ticket];
             _dicTicketBag.Remove(ticket);
             return bag;
-        }
-
-        private bool IsValidateTicket(Ticket ticket, string ticketCreater)
-        {
-            if (ticket.Creater != ticketCreater)
-                return true;
-            return false;
         }
     }
 }

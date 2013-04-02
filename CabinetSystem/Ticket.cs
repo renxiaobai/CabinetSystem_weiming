@@ -8,5 +8,19 @@
         {
             IsUsed = false;
         }
+
+        public static Ticket CreateTicket(string ticketCreater)
+        {
+            Ticket ticket = new Ticket();
+            ticket.Creater = ticketCreater;
+            return ticket;
+        }
+
+        public static bool IsValidateTicket(Ticket ticket, string ticketCreater)
+        {
+            if (ticket.Creater != ticketCreater)
+                return true;
+            return false;
+        }
     }
 }
