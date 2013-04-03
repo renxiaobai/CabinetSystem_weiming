@@ -1,20 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CabinetSystem
 {
-    public class Robot
+    public class Robot : ICabinetOperation
     {
         private const string TicketCreater = "Robot";
-        public bool HasEmptybox()
+        public bool HasEmptyBox()
         {
-            foreach (var cabinet in cabinetList)
-            {
-                if (cabinet.HasEmptyBox())
-                    return true;
-            }
-
-            return false;
+            return cabinetList.Any(cabinet => cabinet.HasEmptyBox());
         }
 
         public void Add(Cabinet cabinet)
@@ -31,8 +26,7 @@ namespace CabinetSystem
                 if (cabinet.HasEmptyBox())
                 {
                     var ticket1 = Ticket.CreateTicket(TicketCreater);
-                    var ticket = cabinet.Store(bag, ticket1);
-                    return ticket;
+                    return cabinet.Store(bag, ticket1);;
                 }
             }
             return null;
@@ -42,12 +36,18 @@ namespace CabinetSystem
         {
             foreach (var cabinet in cabinetList)
             {
-                var bag = cabinet.Pick(ticket, TicketCreater);
+                if (Ticket.IsValidateTicket(ticket, TicketCreater))
+                    continue;
+
+                var bag = cabinet.Pick(ticket);
+
                 if (bag!=null)
                     return bag;
 
             }
             return null;
         }
+
+
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace CabinetSystem
 {
-    public class Direct
+    public class Direct : ICabinetOperation
     {
         private const string TicketCreater = "Cabinet";
 
@@ -19,7 +19,8 @@
 
         public Bag Pick(Ticket ticket)
         {
-            return cabinet.Pick(ticket, TicketCreater);
+            if (Ticket.IsValidateTicket(ticket, TicketCreater)) return null;
+            return cabinet.Pick(ticket);
         }
 
         public bool HasEmptyBox()

@@ -18,7 +18,7 @@ namespace CabinetSystemTest
         {
             var smartRobot = new SmartRobot();
             smartRobot.Add(new Cabinet(50));
-            Assert.IsTrue(smartRobot.HasEmptybox());
+            Assert.IsTrue(smartRobot.HasEmptyBox());
         }
 
         [TestMethod]
@@ -26,7 +26,7 @@ namespace CabinetSystemTest
         {
             var smartRobot = new SmartRobot();
             smartRobot.Add(new Cabinet(0));
-            Assert.IsFalse(smartRobot.HasEmptybox());
+            Assert.IsFalse(smartRobot.HasEmptyBox());
         }
 
         [TestMethod]

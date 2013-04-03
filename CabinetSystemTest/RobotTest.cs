@@ -66,7 +66,7 @@ namespace CabinetSystemTest
             var robot = new Robot();
             var cabinet = new Cabinet(50);
             robot.Add(cabinet);
-            Assert.IsTrue(robot.HasEmptybox());
+            Assert.IsTrue(robot.HasEmptyBox());
         }
 
         [TestMethod]
@@ -75,7 +75,7 @@ namespace CabinetSystemTest
             var robot = new Robot();
             var cabinet = new Cabinet(0);
             robot.Add(cabinet);
-            Assert.IsFalse(robot.HasEmptybox());
+            Assert.IsFalse(robot.HasEmptyBox());
         }
 
         [TestMethod]
@@ -171,9 +171,9 @@ namespace CabinetSystemTest
             var bag2 = new Bag();
             var bag3 = new Bag();
 
-            var ticket1 = robot.Store(bag1);
-            var ticket2 = robot.Store(bag2);
-            var ticket3 = cabinet2.Direct.Store(bag3);
+            robot.Store(bag1);
+            robot.Store(bag2);
+            var ticket3 = new Direct(cabinet2).Store(bag3);
 
             Assert.IsNull(robot.Pick(ticket3));
         }

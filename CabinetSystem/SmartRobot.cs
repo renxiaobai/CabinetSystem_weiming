@@ -4,7 +4,7 @@ using CabinetSystem;
 
 namespace CabinetSystem
 {
-    public class SmartRobot
+    public class SmartRobot : ICabinetOperation
     {
         private const string TicketCreater = "SmartRobot";
 
@@ -20,7 +20,12 @@ namespace CabinetSystem
             cabinetList.Add(cabinet);
         }
 
-        public bool HasEmptybox()
+        public Bag Pick(Ticket ticket)
+        {
+            return null;
+        }
+
+        public bool HasEmptyBox()
         {
             return cabinetList.Any(cabinet => cabinet.HasEmptyBox());
         }
