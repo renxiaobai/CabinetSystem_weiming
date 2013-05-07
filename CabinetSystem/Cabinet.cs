@@ -9,7 +9,7 @@ namespace CabinetSystem
     {
         private const string TicketCreater = "Cabinet";
         private readonly Dictionary<Ticket, Bag> _dicTicketBag = new Dictionary<Ticket, Bag>();
-        private readonly int _capacity;
+        public  readonly int _capacity;
         private readonly Direct direct;
 
         public Cabinet(int capacity)
