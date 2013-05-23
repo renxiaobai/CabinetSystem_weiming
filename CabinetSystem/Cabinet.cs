@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CabinetSystem
 {
-    public class Cabinet
+    public class Cabinet:ICabinetOperation
     {
         private const string TicketCreater = "Cabinet";
         private readonly Dictionary<Ticket, Bag> _dicTicketBag = new Dictionary<Ticket, Bag>();
@@ -46,6 +46,12 @@ namespace CabinetSystem
         {
             if (Ticket.IsValidateTicket(ticket, ticketCreater)) return null;
             return Pick(ticket);
+        }
+
+        public Ticket Store(Bag aBag)
+        {
+            var ticket = new Ticket();
+            return Store(aBag,ticket);
         }
 
         public Bag Pick(Ticket ticket)
