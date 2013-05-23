@@ -40,5 +40,15 @@ namespace CabinetSystemTest
             mgr.Add(cabinet);
             Assert.IsTrue(mgr.HasEmptyBox());
         }
+        [TestMethod]
+        public void Should_store_bag_when_has_empty_cabinet()
+        {
+            var mgr = new Manager();
+            var cabinet = new Cabinet(1);
+            var bag = new Bag();
+            mgr.Add(cabinet);
+            mgr.Store(bag);
+            Assert.IsFalse(mgr.HasEmptyBox());
+        }
     }
 }

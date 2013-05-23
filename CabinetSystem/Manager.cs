@@ -15,7 +15,9 @@ namespace CabinetSystemTest
 
         public Ticket Store(Bag aBag)
         {
-            throw new System.NotImplementedException();
+            if (_managedStuffs.Count == 0)
+                return null;
+            return (from cabinetOperation in _managedStuffs where cabinetOperation.HasEmptyBox() select cabinetOperation.Store(aBag)).FirstOrDefault();
         }
 
         public Bag Pick(Ticket ticket)
